@@ -21,9 +21,6 @@ const AMBIENTE = 'producao';
 const serial = async (
     valoresDht11Temperatura,
     valoresDht11Umidade,
-    valoresLuminosidade,
-    valoresLm35Temperatura,
-    valoresChave
 ) => {
     let poolBancoDados = ''
 
@@ -64,15 +61,10 @@ const serial = async (
         const valores = data.split(';');
         const dht11Temperatura = parseFloat(valores[0]);
         const dht11Umidade = parseFloat(valores[1]);
-        const lm35Temperatura = parseFloat(valores[2]);
-        const luminosidade = parseFloat(valores[3]);
-        const chave = parseInt(valores[4]);
+
 
         valoresDht11Temperatura.push(dht11Temperatura);
         valoresDht11Umidade.push(dht11Umidade);
-        valoresLuminosidade.push(luminosidade);
-        valoresLm35Temperatura.push(lm35Temperatura);
-        valoresChave.push(chave);
 
         if (HABILITAR_OPERACAO_INSERIR) {
             if (AMBIENTE == 'producao') {
